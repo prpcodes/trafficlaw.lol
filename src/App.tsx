@@ -1,4 +1,5 @@
-import { ReactComponent as Logo } from 'assets/favicon.svg';
+import { Buttons } from 'components/Buttons';
+import { Checkbox } from 'components/Checkbox';
 import { Progress } from 'components/Progress';
 import { Remaining } from 'components/Remaining';
 import { useState, useEffect } from 'react';
@@ -44,19 +45,8 @@ function App() {
       <main className="mb-3 shadow-xl card w-96 bg-base-100">
         <div className="card-body">
           <div className="justify-between card-actions">
-            <h2 className="card-title">
-              <Logo className="inline-block w-6 h-6 mr-2" />
-              Trafficlaw Timer
-            </h2>
-            <div className="form-control text-end">
-              <label className="cursor-pointer">
-                <input
-                  type="checkbox"
-                  className="checkbox checkbox-accent"
-                  onChange={() => setPlayAlarm(true)}
-                />
-              </label>
-            </div>
+            <h2 className="card-title">⏲️ Trafficlaw Timer</h2>
+            <Checkbox setPlayAlarm={setPlayAlarm} />
           </div>
           <p>
             Errechnet die Kosten für das Trafficlaw nach Ablauf der Zeit, maximal <b>20</b> Minuten.
@@ -65,15 +55,8 @@ function App() {
           <Progress money={money} />
           {/* MONEY REMAINING */}
           <Remaining money={money} time={time} />
-          {/* CARD */}
-          <div className="justify-end mt-2 card-actions">
-            <button className="btn" onClick={resetTimer}>
-              Reset
-            </button>
-            <button className=" btn btn-primary" onClick={startTimer}>
-              Start
-            </button>
-          </div>
+          {/* Buttons */}
+          <Buttons resetTimer={resetTimer} startTimer={startTimer} />
         </div>
       </main>
       <footer>
