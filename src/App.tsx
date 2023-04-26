@@ -2,7 +2,7 @@ import { Buttons } from 'components/Buttons';
 import { Checkbox } from 'components/Checkbox';
 import { Progress } from 'components/Progress';
 import { Remaining } from 'components/Remaining';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 const MONEY_PER_SECOND = 2.08;
 
@@ -12,17 +12,16 @@ function App() {
   const [isRunning, setIsRunning] = useState(false);
   const [playAlarm, setPlayAlarm] = useState(false);
 
-  const startTimer = () => {
+  const startTimer = useCallback(() => {
     if (isRunning) return;
     setIsRunning(true);
-  };
+  }, [isRunning, setIsRunning]);
 
-  const resetTimer = () => {
-    if (!isRunning) return;
+  const resetTimer = useCallback(() => {
     setIsRunning(false);
     setMoney(2500);
     setTime(1200);
-  };
+  }, [setMoney, setTime, setIsRunning]);
 
   if (money <= 0 && playAlarm === true) {
     const audio = new Audio('/alarm.mp3');
@@ -41,7 +40,7 @@ function App() {
     const interval = setInterval(update, 500);
 
     return () => clearInterval(interval);
-  }, [isRunning, money, time]);
+  }, [isRunning, money, resetTimer, time]);
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2 App">
