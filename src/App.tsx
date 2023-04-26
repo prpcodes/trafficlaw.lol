@@ -13,10 +13,12 @@ function App() {
   const [playAlarm, setPlayAlarm] = useState(false);
 
   const startTimer = () => {
+    if (isRunning) return;
     setIsRunning(true);
   };
 
   const resetTimer = () => {
+    if (!isRunning) return;
     setIsRunning(false);
     setMoney(2500);
     setTime(1200);
@@ -24,12 +26,13 @@ function App() {
 
   if (money <= 0 && playAlarm === true) {
     const audio = new Audio('/alarm.mp3');
+    audio.volume = 0.2;
     audio.play();
     setPlayAlarm(false);
   }
 
   useEffect(() => {
-    if (!isRunning) return;
+    if (!isRunning || money <= 0 || time <= 0) return resetTimer();
     const update = () => {
       setMoney((money) => money - MONEY_PER_SECOND);
       setTime((time) => time - 1);
@@ -38,7 +41,7 @@ function App() {
     const interval = setInterval(update, 500);
 
     return () => clearInterval(interval);
-  }, [isRunning]);
+  }, [isRunning, money, time]);
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2 App">
