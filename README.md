@@ -17,5 +17,6 @@ The objective of this project is to develop a fun and efficient app that calcula
 You are allowed to use the code!
 
 You are **not** allowed to use the **images** and **texts**
-of this site. This project is not affiliated with any of the
+of this site.
+This project is not affiliated with any of the
 parties mentioned on the site.
