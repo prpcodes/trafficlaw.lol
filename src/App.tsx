@@ -55,7 +55,8 @@ function App() {
             <Checkbox setPlayAlarm={setPlayAlarm} />
           </div>
           <p>
-            Errechnet die Kosten für das Trafficlaw nach Ablauf der Zeit, maximal <b>20</b> Minuten.
+            Errechnet die Kosten für das Trafficlaw nach Ablauf der Zeit, standardmäßig <b>20 </b>
+            Minuten.
           </p>
           {/* PROGRESS */}
           <Progress money={money} />
