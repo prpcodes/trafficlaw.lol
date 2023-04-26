@@ -44,7 +44,7 @@ function App() {
       setTime((time) => time - 1);
     };
 
-    const interval = setInterval(update, 500);
+    const interval = setInterval(update, 1000);
 
     return () => clearInterval(interval);
   }, [isRunning, money, resetTimer, time]);
