@@ -3,8 +3,8 @@ function Remaining({ money, time }: { money: number; time: number }) {
     <p>
       Verbleibend:{' '}
       <b>
-        €{money.toFixed(2)} - {Math.floor(time / 60)}
-      </b>
+        €{Number(money)?.toFixed(2) ?? 0} - {Math.floor(time / 60)}
+      </b>{' '}
       min
     </p>
   );

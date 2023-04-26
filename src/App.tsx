@@ -1,10 +1,9 @@
 import { Buttons } from 'components/Buttons';
+import { Inputs } from 'components/Inputs';
 import { Checkbox } from 'components/Checkbox';
 import { Progress } from 'components/Progress';
 import { Remaining } from 'components/Remaining';
 import { useState, useEffect, useCallback } from 'react';
-
-const MONEY_PER_SECOND = 2.08;
 
 function App() {
   const [money, setMoney] = useState(2500);
@@ -25,15 +24,20 @@ function App() {
 
   if (money <= 0 && playAlarm === true) {
     const audio = new Audio('/alarm.mp3');
-    audio.volume = 0.2;
+    audio.volume = 0.05;
     audio.play();
     setPlayAlarm(false);
   }
 
+  const stopTimer = useCallback(() => {
+    setIsRunning(false);
+  }, [setIsRunning]);
+
   useEffect(() => {
-    if (!isRunning || money <= 0 || time <= 0) return resetTimer();
+    if (!isRunning) return;
+    if (money <= 0 || time <= 0) return resetTimer();
     const update = () => {
-      setMoney((money) => money - MONEY_PER_SECOND);
+      setMoney((money) => money - money / time);
       setTime((time) => time - 1);
     };
 
@@ -57,8 +61,15 @@ function App() {
           <Progress money={money} />
           {/* MONEY REMAINING */}
           <Remaining money={money} time={time} />
+          {/* Inputs */}
+          <Inputs isRunning={isRunning} setMoney={setMoney} setTime={setTime} />
           {/* Buttons */}
-          <Buttons resetTimer={resetTimer} startTimer={startTimer} />
+          <Buttons
+            isRunning={isRunning}
+            startTimer={startTimer}
+            stopTimer={stopTimer}
+            resetTimer={resetTimer}
+          />
         </div>
       </main>
       <footer>
