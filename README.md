@@ -5,7 +5,7 @@ The objective of this project is to develop a fun and efficient app that calcula
   Available at <a href="https://www.trafficlaw.lol">www.trafficlaw.lol</a>.
 </strong>
 
-<img url="https://www.trafficlaw.lol/og-image.jpeg" alt="Image"/>
+![Screenshot of the Application.](https://www.trafficlaw.lol/og-image.jpeg)
 
 ## :clipboard: Tech Stack
 - React & TypeScript & Vite
