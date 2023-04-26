@@ -6,6 +6,7 @@ import { Remaining } from 'components/Remaining';
 import { useState, useEffect, useCallback } from 'react';
 
 function App() {
+  const [initialMoney, setInitialMoney] = useState(2500);
   const [money, setMoney] = useState(2500);
   const [time, setTime] = useState(1200);
   const [isRunning, setIsRunning] = useState(false);
@@ -13,14 +14,16 @@ function App() {
 
   const startTimer = useCallback(() => {
     if (isRunning) return;
+    setInitialMoney(money);
     setIsRunning(true);
-  }, [isRunning, setIsRunning]);
+  }, [isRunning, money]);
 
   const resetTimer = useCallback(() => {
     setIsRunning(false);
+    setInitialMoney(money);
     setMoney(2500);
     setTime(1200);
-  }, [setMoney, setTime, setIsRunning]);
+  }, [money]);
 
   if (money <= 0 && playAlarm === true) {
     const audio = new Audio('/alarm.mp3');
@@ -59,7 +62,7 @@ function App() {
             Minuten.
           </p>
           {/* PROGRESS */}
-          <Progress money={money} />
+          <Progress money={money} initialMoney={initialMoney} />
           {/* MONEY REMAINING */}
           <Remaining money={money} time={time} />
           {/* Inputs */}

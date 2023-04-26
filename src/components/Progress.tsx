@@ -1,6 +1,10 @@
-function Progress({ money }: { money: number }) {
+function Progress({ money, initialMoney }: { money: number; initialMoney: number }) {
   return (
-    <progress className="w-full progress progress-primary" value={money} max="2500"></progress>
+    <progress
+      className="w-full progress progress-primary"
+      value={money}
+      max={initialMoney}
+    ></progress>
   );
 }
 
