@@ -1,10 +1,10 @@
 {
-  "name": "vite-react-ts",
+  "name": "trafficlaw.lol",
   "version": "0.0.0",
-  "description": "React Typescript Starter Template with Vite",
+  "description": "An application to calculate the cost of a trafficlaw violation.",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/uchihamalolan/vite-react-ts.git"
+    "url": "git+https://github.com/prpcodes/trafficlaw.git"
   },
   "keywords": [
     "vite",
@@ -12,9 +12,9 @@
     "starter",
     "template"
   ],
-  "author": "Malolan B. <uchihamalolan@gmail.com> (https://twitter.com/malolan12)",
+  "author": "Philipp Proksch <work@prp.codes> (https://github.com/prpcodes)",
   "license": "MIT",
-  "homepage": "https://github.com/uchihamalolan/vite-react-ts",
+  "homepage": "https://prp.codes",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -26,6 +26,7 @@
     "lint": "eslint --cache ./src"
   },
   "dependencies": {
+    "daisyui": "^2.51.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-error-boundary": "^3.1.4",

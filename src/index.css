@@ -11,3 +11,19 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
+
+input[type="checkbox"]{
+    width: 30px;
+    height: 30px;
+    border: none;
+    background: transparent;
+}
+input[type="checkbox"]:checked {
+    background: transparent;
+}
+input[type="checkbox"]:checked:after {
+    content: "🔊";
+}
+input[type="checkbox"]:after {
+    content: "🔈";
+}
